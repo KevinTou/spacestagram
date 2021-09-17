@@ -21,7 +21,7 @@ const HomeFeed = () => {
       })
       .catch((error) => {
         const error_message = error?.response?.data?.error?.message;
-        setError(error_message);
+        setError(error_message || 'Oops... something went wrong!');
         setIsLoading(false);
       });
   }, []);
@@ -31,13 +31,12 @@ const HomeFeed = () => {
   }
 
   if (error) {
-    return <p>Error: {error}</p>;
+    return <p style={{ color: 'red' }}>{error}</p>;
   }
 
   return (
     <main>
       <p>Home Feed</p>
-      {images.length > 0 && console.log(images)}
     </main>
   );
 };
