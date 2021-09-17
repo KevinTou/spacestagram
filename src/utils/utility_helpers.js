@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const BASE_URL_WITH_API_KEY = `https://api.nasa.gov/planetary/apod/?api_key=${process.env.REACT_APP_API_KEY}`;
+const BASE_URL_WITH_API_KEY = `https://api.nasa.gov/planetary/apod?api_key=${process.env.REACT_APP_API_KEY}`;
 
 export function fetchImagesWithDemoKey() {
-  return axios.get(`https://api.nasa.gov/planetary/apod/?api_key=DEMO_KEY`);
+  return axios.get(`https://api.nasa.gov/planetary/apod?api_key=DEMO_KEY`);
 }
 
 export function fetchImage() {
