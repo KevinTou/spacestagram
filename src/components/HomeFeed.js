@@ -1,4 +1,4 @@
-import { useState, useLayoutEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { fetchImagesWithDemoKey } from '../utils/utility_helpers';
 
 import Loading from './Loading';
@@ -8,7 +8,7 @@ const HomeFeed = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState('');
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     setIsLoading(true);
     fetchImagesWithDemoKey()
       .then(({ data }) => {
@@ -31,9 +31,7 @@ const HomeFeed = () => {
   }
 
   if (error) {
-    alert(error);
-    console.log('firing');
-    setError('');
+    return <p>Error: {error}</p>;
   }
 
   return (
