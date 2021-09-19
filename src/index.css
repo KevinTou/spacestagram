@@ -1,9 +1,16 @@
-/* Imports */
+/* 
+--------------------------------------------------------------
+  Imports 
+--------------------------------------------------------------
+*/
 @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 
-/* http://meyerweb.com/eric/tools/css/reset/ 
-   v2.0 | 20110126
-   License: none (public domain)
+/* 
+--------------------------------------------------------------
+  http://meyerweb.com/eric/tools/css/reset/ 
+  v2.0 | 20110126
+  License: none (public domain)
+--------------------------------------------------------------
 */
 
 html,
@@ -131,17 +138,133 @@ table {
   border-spacing: 0;
 }
 
-/* Global */
+/* 
+--------------------------------------------------------------
+  Global 
+--------------------------------------------------------------
+*/
 body,
 html {
   font-family: 'Poppins', sans-serif;
+  background-color: lightgray;
 }
 
-/* App */
+/* 
+--------------------------------------------------------------
+  App 
+--------------------------------------------------------------
+*/
 .app-container {
   margin: 0 auto;
   max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.app-title {
+  font-size: 3rem;
+  font-weight: 800;
+  margin: 1rem 0;
+}
+
+.app-description {
+  text-align: center;
+}
+
+/* 
+--------------------------------------------------------------
+  Loading 
+--------------------------------------------------------------
+*/
+
+/* 
+--------------------------------------------------------------
+  Error 
+--------------------------------------------------------------
+*/
+
+.error-message {
+  color: red;
+  margin: 1rem 0;
+}
+
+/* 
+--------------------------------------------------------------
+  Posts Container 
+--------------------------------------------------------------
+*/
+.posts-container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+/* 
+--------------------------------------------------------------
+  Posts 
+--------------------------------------------------------------
+*/
+
+.post-container {
+  border-radius: 5px;
+  background-color: white;
+  margin: 1rem 0;
+}
+
+.post-image-container {
+  width: 100%;
+}
+
+.post-image,
+.post-video {
+  width: 100%;
+  max-height: 300px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.post-title {
+  text-align: center;
+  font-weight: 800;
+  margin: 0.5rem 0;
+}
+
+.post-date {
+  text-align: center;
+}
+
+.post-like-button {
+  width: 40px;
+  height: 40px;
+  color: red;
+  font-size: 30px;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  background-color: transparent;
+  position: relative;
+  cursor: pointer;
+}
+
+@keyframes liked {
+  from {
+    top: 0px;
+    font-size: 0;
+    opacity: 1;
+  }
+
+  to {
+    top: -40px;
+    font-size: 40px;
+    opacity: 0;
+  }
+}
+
+.animated-heart {
+  position: absolute;
+  animation: liked 300ms ease-in;
+  animation-iteration-count: 1;
 }
