@@ -10,13 +10,13 @@ export function fetchImage() {
   return axios.get(BASE_URL_WITH_API_KEY);
 }
 
-export function fetchImagesWithDate(starting_date = '', ending_date = '') {
-  if (starting_date && ending_date) {
+export function fetchImagesWithDate(start_date = '', end_date = '') {
+  if (start_date && end_date) {
     return axios.get(
-      `${BASE_URL_WITH_API_KEY}&starting_date=${starting_date}&ending_date=${ending_date}`,
+      `${BASE_URL_WITH_API_KEY}&start_date=${start_date}&end_date=${end_date}`,
     );
-  } else if (starting_date) {
-    return axios.get(`${BASE_URL_WITH_API_KEY}&starting_date=${starting_date}`);
+  } else if (start_date) {
+    return axios.get(`${BASE_URL_WITH_API_KEY}&start_date=${start_date}`);
   }
 
   return axios.get(BASE_URL_WITH_API_KEY);
