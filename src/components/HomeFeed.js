@@ -1,7 +1,11 @@
 import { useState, useEffect } from 'react';
-import { fetchImagesWithDemoKey } from '../utils/utility_helpers';
+import dayjs from 'dayjs';
 
-import Loading from './Loading';
+import Error from './Error';
+import PostsContainer from './PostsContainer';
+import SkeletonPost from './SkeletonPost';
+
+import { fetchImagesWithDate } from '../utils/utility_helpers';
 
 const HomeFeed = () => {
   const [images, setImages] = useState([]);
@@ -10,13 +14,12 @@ const HomeFeed = () => {
 
   useEffect(() => {
     setIsLoading(true);
-    fetchImagesWithDemoKey()
+    const today = dayjs().toJSON().slice(0, 10);
+    const tenDaysAgo = dayjs(today).subtract(10, 'day').toJSON().slice(0, 10);
+    fetchImagesWithDate(tenDaysAgo, today)
       .then(({ data }) => {
-        if (Array.isArray(data)) {
-          setImages(data);
-        } else {
-          setImages([data]);
-        }
+        const sortedData = data.reverse();
+        setImages(sortedData);
         setIsLoading(false);
       })
       .catch((error) => {
@@ -26,17 +29,13 @@ const HomeFeed = () => {
       });
   }, []);
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
   if (error) {
-    return <p style={{ color: 'red' }}>{error}</p>;
+    return <Error error={error} />;
   }
 
   return (
     <main>
-      <p>Home Feed</p>
+      {isLoading ? <SkeletonPost /> : <PostsContainer images={images} />}
     </main>
   );
 };

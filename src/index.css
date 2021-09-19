@@ -206,7 +206,7 @@ html {
 */
 
 .post-container {
-  border-radius: 10px;
+  border-radius: 5px;
   background-color: white;
   margin: 1rem 0;
 }
@@ -215,11 +215,12 @@ html {
   width: 100%;
 }
 
-.post-image {
+.post-image,
+.post-video {
   width: 100%;
   max-height: 300px;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 .post-title {
@@ -245,6 +246,7 @@ html {
   border: none;
   background-color: transparent;
   position: relative;
+  cursor: pointer;
 }
 
 @keyframes liked {
